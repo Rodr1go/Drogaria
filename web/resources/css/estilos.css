@@ -1,0 +1,9 @@
+/* 
+    Created on : 01/05/2015, 11:55:18
+    Author     : stryker
+*/
+
+.ui-widget, .ui-widget .ui-widget{
+  font-size: 95%;  
+}
+

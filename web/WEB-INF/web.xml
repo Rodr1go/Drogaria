@@ -23,8 +23,13 @@
     </welcome-file-list>
     
     <!-- Tema do PrimeFaces -->
-    <!-- <context-param>
+    <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>blitzer</param-value>
-    </context-param> --> 
+        <param-value>aristo</param-value>
+    </context-param>  
+    
+    <!-- Carregamento do contexto do Hibernate -->
+    <listener>
+        <listener-class>br.com.drogaria.util.ContextListener</listener-class>
+    </listener>
 </web-app>

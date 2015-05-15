@@ -9,6 +9,9 @@
     <ui:composition template="/templates/modeloGeral.xhtml">
         <ui:define name="metadata">
             <f:metadata>
+                <f:viewParam name="fabacao" value="#{fabricanteBean.acao}" />
+                <f:viewParam name="fabcod" value="#{fabricanteBean.codigo}" />
+                
                 <f:event  listener="#{fabricanteBean.carregarCadastro}" type="preRenderView" />
             </f:metadata>
         </ui:define>
@@ -25,23 +28,29 @@
                     <p:inputText size="10" readonly="true" value="#{fabricanteBean.fabricanteCadastro.codigo}" />
 
                     <p:outputLabel value="Descrição:" />
-                    <p:inputText maxlength="50"  size="30" value="#{fabricanteBean.fabricanteCadastro.descricao}" />
+                    <p:inputText maxlength="50"  size="30" value="#{fabricanteBean.fabricanteCadastro.descricao}" 
+                                 readonly="#{fabricanteBean.acao == 'Excluir'}" />
                 </h:panelGrid>
 
                 <h:panelGrid columns="5">
                     <p:commandButton value="Novo" actionListener="#{fabricanteBean.novo}" 
-                                     update=":frmFabCad:pnlFabCadDados"/>
+                                     update=":frmFabCad:pnlFabCadDados"
+                                     rendered="#{fabricanteBean.acao == 'Novo'}" />
+                    
                     <p:commandButton value="Salvar" 
                                      actionListener="#{fabricanteBean.salvar}" 
-                                     update=":msgGlobal :frmFabCad:pnlFabCadDados" />
+                                     update=":msgGlobal :frmFabCad:pnlFabCadDados" 
+                                     rendered="#{fabricanteBean.acao == 'Novo'}" />
                     
                     <p:commandButton value="Excluir" 
                                      actionListener="#{fabricanteBean.excluir}" 
-                                     update=":msgGlobal" />
+                                     update=":msgGlobal" 
+                                     rendered="#{fabricanteBean.acao == 'Excluir'}" />
                     
                     <p:commandButton value="Editar" 
                                      actionListener="#{fabricanteBean.editar}" 
-                                     update=":msgGlobal" />
+                                     update=":msgGlobal" 
+                                     rendered="#{fabricanteBean.acao == 'Editar'}" />
                     
                     <p:button value="Voltar" outcome="/pages/fabricantePesquisa.xhtml" />
                 </h:panelGrid>
